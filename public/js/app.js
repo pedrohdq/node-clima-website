@@ -15,6 +15,7 @@ const x = d3.scale.linear().domain([0, data.length - 1]).range([0,w])
 const y = d3.scale.linear().domain([0, max]).range([0,h])
 
 console.log(x(8), x(4))
+
 // Base vis layer
 
 const vis = d3.select('#chart')
@@ -39,7 +40,7 @@ weatherForm.addEventListener('submit', (e) => {
    response.parentElement.style = 'background-color: rgb(0, 0, 0, 0); color: #333333;'
    response.innerHTML = 'Buscando...'
 
-   fetch('http://localhost:3000/clima?loc=' + weatherInput.value).then((res) => {
+   fetch('/clima?loc=' + weatherInput.value).then((res) => {
       res.json().then((data) => {
          if (data.error) {
             response.parentElement.style = 'background-color: rgb(255, 0, 0, 0.2); color: #333333;'
